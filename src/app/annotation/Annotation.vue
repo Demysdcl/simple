@@ -20,12 +20,12 @@ export default {
 
 <template>
 <div>
-  <q-card v-for="annotation in annotations" color="red">
-    <q-card-title>
+  <q-card v-for="annotation in annotations" >
+    <q-card-title color="red">
       {{ annotation.title }}
     </q-card-title>
     <q-card-separator />
-    <q-card-main>
+    <q-card-main color="primary">
       <p v-for=" text in annotation.content">
           {{ text }}
       </p>

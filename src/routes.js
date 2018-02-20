@@ -16,4 +16,12 @@ export default [{
   title: 'Anotações',
   icon: 'school',
   subtitle: 'Espaço para anotações'
-}]
+},
+{
+  path: '/todo',
+  component: load('Todo'),
+  title: 'Todo',
+  icon: 'school',
+  subtitle: 'Controle de tarefas'
+}
+]
