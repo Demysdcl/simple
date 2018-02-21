@@ -21,11 +21,11 @@ export default {
 <template>
 <div>
   <q-card v-for="annotation in annotations" >
-    <q-card-title color="red">
+    <q-card-title style="title-main" >
       {{ annotation.title }}
     </q-card-title>
     <q-card-separator />
-    <q-card-main color="primary">
+    <q-card-main>
       <p v-for=" text in annotation.content">
           {{ text }}
       </p>
@@ -33,3 +33,9 @@ export default {
   </q-card>
 </div>
 </template>
+
+<style lang="stylus" scoped>
+@import '~variables'
+.title-main
+  background-color primary  
+</style>

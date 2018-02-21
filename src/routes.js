@@ -21,7 +21,7 @@ export default [{
   path: '/todo',
   component: load('Todo'),
   title: 'Todo',
-  icon: 'school',
+  icon: 'check circle',
   subtitle: 'Controle de tarefas'
 }
 ]

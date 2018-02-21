@@ -4,7 +4,7 @@ export default {
   components: {
     QToolbar, QToolbarTitle, QBtn, QIcon
   },
-  props: ['layout'],
+  props: ['title'],
   methods: {
     clicked () {
       this.$emit('clicked')
@@ -21,7 +21,7 @@ export default {
       <q-icon name="menu" />
     </q-btn>
     <q-toolbar-title class="title-left">
-      Todovue
+      {{ title }}
     </q-toolbar-title>
   </q-toolbar>
 </template>
