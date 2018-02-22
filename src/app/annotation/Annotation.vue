@@ -8,7 +8,7 @@ export default {
         {title: 'Anotação 2', content: ['Conteúdo 2']},
         {title: 'Anotação 3', content: ['Conteúdo 3']},
         {title: 'Anotação 4', content: ['Conteúdo 4', 'Conteúdo X']},
-        {title: 'Anotação 5', content: ['Conteúdo 5', 'Conteúdo 6', 'Conteúdo 7', 'Conteúdo 8']}
+        {title: 'Anotação 1', content: ['Conteúdo 2', 'Conteúdo 3', 'Conteúdo 4', 'Conteúdo 7']}
       ]
     }
   },
@@ -20,13 +20,13 @@ export default {
 
 <template>
 <div>
-  <q-card v-for="annotation in annotations" >
+  <q-card v-for="annotation in annotations" :key="annotations.indexOf(annotation)">
     <q-card-title style="title-main" >
       {{ annotation.title }}
     </q-card-title>
     <q-card-separator />
     <q-card-main>
-      <p v-for=" text in annotation.content">
+      <p v-for=" text in annotation.content" :key="annotation.content.indexOf(text)">
           {{ text }}
       </p>
     </q-card-main>
