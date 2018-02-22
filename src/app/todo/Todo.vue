@@ -1,5 +1,13 @@
 <script>
     export default {
+        data() {
+            return {
+                list: []
+            }
+        },
+        created: {
+            
+        }
     }
 </script>
 
