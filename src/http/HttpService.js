@@ -1,49 +1,38 @@
 import { http } from './index'
-import { Notify } from 'quasar'
 
-export class HttpService {
+class HttpService {
   constructor (url) {
     this.url = url
+    console.log(this.url)
   }
 
   findAll () {
     return http.get(this.url).then(res => res.data, error => {
       console.log(error)
-      this.createNotification('localizar as informações', 1)
+      return {
+        message: 'Não foi possível localizar'
+      }
     })
   }
 
   findOne (id) {
     return http.get(`${this.url} / ${id}`).then(res => res.data, error => {
-      console.error(error)
-      this.createNotification(`encontrar pela ID: ${id}`, 1)
+      console.log(error)
+      return `Não foi possível localizar a informação com ID: ${id}`
     })
   }
 
   save (entity) {
     return http.post(this.url, entity).then(res => {
-      this.createNotification('Salvo com sucesso', 0)
-      return res.data
+      return {
+        list: res.data,
+        msg: 'Salvo com sucesso'
+      }
     }, error => {
-      console.error(error)
-      this.createNotification('salva as informações', 1)
+      console.log(error)
+      return 'Não foi possível salvar'
     })
-  }
-
-  createNotification (message, index) {
-    Notify.create({
-      message: `Não foi possível ${message}`,
-      ...this.getConfig(index)
-    })
-  }
-  getConfig (index) {
-    let alerts = [{
-      icon: 'tag_faces',
-      color: 'secondary'
-    }, {
-      icon: 'report_problem',
-      color: 'negative'
-    }]
-    return alerts[index]
   }
 }
+
+export default HttpService
