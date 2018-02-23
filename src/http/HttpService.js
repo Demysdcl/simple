@@ -3,7 +3,6 @@ import { http } from './index'
 class HttpService {
   constructor (url) {
     this.url = url
-    console.log(this.url)
   }
 
   findAll () {

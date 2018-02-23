@@ -32,14 +32,10 @@ export default {
   <div v-drag-and-drop:options="options">
 
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <li v-for="col in colOne"> {{ col.title }}</li>
       </ul>
       <ul>
-          <li>Item 4</li>
-          <li>Item 5</li>
-          <li>Item 6</li>
+          <li v-for="col in colTwo">{{ col.title }}</li>
       </ul>
 
   </div>
