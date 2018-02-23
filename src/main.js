@@ -12,8 +12,8 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 
 import Vue from 'vue'
 import Quasar from 'quasar'
-import VueDragula from 'vue-dragula'
 import router from './router'
+import VueDraggable from 'vue-draggable'
 import 'quasar-extras/material-icons'
 import 'quasar-extras/ionicons'
 import 'quasar-extras/fontawesome'
@@ -21,7 +21,7 @@ import 'quasar-extras/animate'
 
 Vue.config.productionTip = false
 Vue.use(Quasar)
-Vue.use(VueDragula)
+Vue.use(VueDraggable)
 
 if (__THEME === 'mat') {
   require('quasar-extras/roboto-font')
