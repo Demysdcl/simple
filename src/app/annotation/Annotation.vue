@@ -1,10 +1,10 @@
 <script>
-import { QCard, QCardMain, QCardTitle, QCardSeparator } from 'quasar'
+import Card from '../../components/Card'
 export default {
   data () {
     return {
       annotations: [
-        {title: 'Anotação 1', content: ['Conteúdo 1']},
+        {title: 'Anotação 1', content: []},
         {title: 'Anotação 2', content: ['Conteúdo 2']},
         {title: 'Anotação 3', content: ['Conteúdo 3']},
         {title: 'Anotação 4', content: ['Conteúdo 4', 'Conteúdo X']},
@@ -13,24 +13,18 @@ export default {
     }
   },
   components: {
-    QCard, QCardMain, QCardTitle, QCardSeparator
+    Card
   }
 }
 </script>
 
 <template>
 <div>
-  <q-card v-for="annotation in annotations" :key="annotations.indexOf(annotation)">
-    <q-card-title style="title-main" >
-      {{ annotation.title }}
-    </q-card-title>
-    <q-card-separator />
-    <q-card-main>
-      <p v-for=" text in annotation.content" :key="annotation.content.indexOf(text)">
-          {{ text }}
-      </p>
-    </q-card-main>
-  </q-card>
+  <card :title="annotation.title" v-for="annotation in annotations" :key="annotations.indexOf(annotation)">
+    <p v-for=" text in annotation.content" :key="annotation.content.indexOf(text)">
+        {{ text }}
+    </p>
+  </card>
 </div>
 </template>
 
