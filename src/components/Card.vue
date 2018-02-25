@@ -2,7 +2,8 @@
 import { QCard, QCardTitle, QCardMain, QCardSeparator } from 'quasar'
 export default {
   props: {
-    title: ''
+    title: '',
+    colot: ''
   },
   components: {
     QCard, QCardTitle, QCardMain, QCardSeparator
@@ -11,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <q-card>
+  <q-card :color="color">
     <q-card-title style="text-align:left">
       {{ title }}
     </q-card-title>
