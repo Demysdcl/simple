@@ -3,7 +3,7 @@ import { QCard, QCardTitle, QCardMain, QCardSeparator } from 'quasar'
 export default {
   props: {
     title: '',
-    colot: ''
+    color: ''
   },
   components: {
     QCard, QCardTitle, QCardMain, QCardSeparator

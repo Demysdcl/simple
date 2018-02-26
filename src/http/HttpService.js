@@ -32,6 +32,13 @@ class HttpService {
       return 'Não foi possível salvar'
     })
   }
+
+  delete (id) {
+    return http.delete(`${this.url} / ${id}`).then(res => res, error => {
+      console.log(error)
+      return `Não foi possível deletar: ${id}`
+    })
+  }
 }
 
 export default HttpService

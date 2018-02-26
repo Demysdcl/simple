@@ -18,9 +18,9 @@ export default [{
   subtitle: 'Espaço para anotações'
 },
 {
-  path: '/todo',
-  component: load('Todo'),
-  title: 'Todo',
+  path: '/kanban',
+  component: load('Kanban'),
+  title: 'Kanban',
   icon: 'check circle',
   subtitle: 'Controle de tarefas'
 }
