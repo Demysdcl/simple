@@ -39,7 +39,7 @@ export default {
 <template>
   <div>
     <left>
-      <q-btn round color="purple" icon="create" label="On Left"/>
+      <q-btn round color="secondary" icon="create" label="On Left"/>
     </left>
     <div class="row" >
       <card title="TODO" class="col" color="negative">

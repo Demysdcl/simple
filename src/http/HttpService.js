@@ -1,4 +1,5 @@
 import { http } from './index'
+import { Dialog } from 'quasar'
 
 class HttpService {
   constructor (url) {
@@ -8,35 +9,39 @@ class HttpService {
   findAll () {
     return http.get(this.url).then(res => res.data, error => {
       console.log(error)
-      return {
-        message: 'Não foi possível localizar'
-      }
+      this.dialog('Erro', 'Não foi possível carregar as informações')
     })
   }
 
   findOne (id) {
     return http.get(`${this.url} / ${id}`).then(res => res.data, error => {
       console.log(error)
-      return `Não foi possível localizar a informação com ID: ${id}`
+      this.dialog('Erro', 'Não foi possível realizar a consulta')
     })
   }
 
   save (entity) {
     return http.post(this.url, entity).then(res => {
-      return {
-        list: res.data,
-        msg: 'Salvo com sucesso'
-      }
+      this.dialog('Salvar', 'Salvo com sucesso')
+      return res.data
     }, error => {
       console.log(error)
-      return 'Não foi possível salvar'
+      this.dialog('Erro', 'Não foi possível salvar as informações')
     })
   }
 
   delete (id) {
-    return http.delete(`${this.url} / ${id}`).then(res => res, error => {
-      console.log(error)
-      return `Não foi possível deletar: ${id}`
+    return http.delete(`${this.url} / ${id}`)
+      .then(res => this.dialog('Excluir', 'Excluído com sucesso'),
+        error => {
+          console.log(error)
+          this.dialog('Erro', 'Erro ao deletar a informação')
+        })
+  }
+
+  dialog (title, message) {
+    Dialog.create({
+      title, message
     })
   }
 }
