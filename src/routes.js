@@ -23,5 +23,9 @@ export default [{
   title: 'Kanban',
   icon: 'check circle',
   subtitle: 'Controle de tarefas'
+},
+{
+  path: '/kanban/form',
+  component: load('Kanban')
 }
 ]

@@ -7,12 +7,12 @@ export default {
   components: {
     QCard, QBtn, Card, draggrable
   },
-
   data () {
     return {
       colOne: [],
       colTwo: [],
       colThree: [],
+      openDialog: false,
       options: {
         group: 'task'
       }
@@ -39,7 +39,7 @@ export default {
 <template>
   <div>
     <left>
-      <q-btn round color="secondary" icon="create" label="On Left"/>
+      <q-btn round color="secondary" icon="create" @click="openDialog = true" label="On Left"/>
     </left>
     <div class="row" >
       <card title="TODO" class="col" color="negative">
@@ -73,6 +73,6 @@ export default {
 </template>
 <style lang="stylus" scoped>
 left 
-  float right
+  float right 
   margin 20px
 </style>
