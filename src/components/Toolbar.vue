@@ -26,7 +26,7 @@ export default {
   </q-toolbar>
 </template>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .title-left
   text-align left
   margin-left 5px

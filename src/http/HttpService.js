@@ -1,6 +1,5 @@
 import { http } from './index'
 import { Dialog } from 'quasar'
-
 class HttpService {
   constructor (url) {
     this.url = url
@@ -21,21 +20,19 @@ class HttpService {
   }
 
   save (entity) {
-    return http.post(this.url, entity).then(res => {
-      this.dialog('Salvar', 'Salvo com sucesso')
-      return res.data
-    }, error => {
-      console.log(error)
-      this.dialog('Erro', 'Não foi possível salvar as informações')
-    })
+    return http.post(this.url, entity)
+      .then(res => res.data, error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível salvar a informação')
+      })
   }
 
   delete (id) {
     return http.delete(`${this.url} / ${id}`)
-      .then(res => this.dialog('Excluir', 'Excluído com sucesso'),
+      .then(res => res.data,
         error => {
           console.log(error)
-          this.dialog('Erro', 'Erro ao deletar a informação')
+          this.dialog('Erro', 'Não foi possível deletar a informação')
         })
   }
 

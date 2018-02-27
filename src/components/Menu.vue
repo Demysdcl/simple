@@ -30,6 +30,3 @@ export default {
     </q-list>
   </div>
 </template>
-
-<style lang="css">
-</style>

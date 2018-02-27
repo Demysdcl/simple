@@ -39,7 +39,7 @@ export default {
 <template>
   <div>
     <left>
-      <q-btn round color="secondary" icon="create" @click="openDialog = true" label="On Left"/>
+      <q-btn round color="secondary" icon="create" @click="$router.push('/kanban/form')" label="On Left"/>
     </left>
     <div class="row" >
       <card title="TODO" class="col" color="negative">
