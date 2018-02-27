@@ -2,10 +2,10 @@
 import HttpService from '../../http/HttpService'
 import draggrable from 'vuedraggable'
 import Card from '../../components/Card'
-import { QCard, QBtn } from 'quasar'
+import { QCard, QCardMain, QCardActions, QCardSeparator, QBtn } from 'quasar'
 export default {
   components: {
-    QCard, QBtn, Card, draggrable
+    QCard, QCardMain, QCardActions, QCardSeparator, QBtn, Card, draggrable
   },
   data () {
     return {
@@ -21,6 +21,7 @@ export default {
 
   created () {
     this.service = new HttpService('list')
+    this.taskService = new HttpService('tasks')
     this.getList()
   },
 
@@ -31,6 +32,11 @@ export default {
         this.colTwo = res.doingList
         this.colThree = res.doneList
       })
+    },
+
+    remove (task) {
+      this.taskService.delete(task.id)
+        .then(res => this.getList())
     }
   }
 }
@@ -45,8 +51,15 @@ export default {
       <card title="TODO" class="col" color="negative">
         <draggrable  :options="options" min-height="0">
           <q-card v-for="task in colOne" color="dark" :key="task.id">
+            <q-card-main>
               <h6>{{ task.title }} </h6>
               {{ task.description }}
+            </q-card-main>  
+            <q-card-separator/>
+            <q-card-actions>
+              <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
+              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+            </q-card-actions>
           </q-card>
         </draggrable>
       </card>
@@ -54,8 +67,15 @@ export default {
       <card title="DOING" class="col" color="warning">
         <draggrable :options="options" min-height="0">
           <q-card v-for="task in colTwo" color="dark" :key="task.id">
+            <q-card-main>
               <h6>{{ task.title }} </h6>
               {{ task.description }}
+            </q-card-main>
+            <q-card-separator/>
+            <q-card-actions>
+              <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
+              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+            </q-card-actions>
           </q-card>
         </draggrable>
       </card>
@@ -63,8 +83,15 @@ export default {
       <card title="DONE" class="col" color="positive">
         <draggrable :options="options" min-height="0">
           <q-card v-for="task in colThree" color="dark" :key="task.id">
+            <q-card-main>
               <h6>{{ task.title }} </h6>
               {{ task.description }}
+            </q-card-main>  
+            <q-card-separator/>
+            <q-card-actions>
+              <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
+              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+            </q-card-actions>
           </q-card>
         </draggrable>
       </card>

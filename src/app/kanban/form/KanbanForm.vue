@@ -1,8 +1,8 @@
 <script>
-import { QCard, QBtn, QInput } from 'quasar'
+import { QCard, QCardMain, QCardTitle, QCardActions, QCardSeparator, QBtn, QInput } from 'quasar'
 import HttpService from '../../../http/HttpService'
 export default {
-  components: { QCard, QBtn, QInput },
+  components: { QCard, QCardTitle, QCardMain, QCardActions, QCardSeparator, QBtn, QInput },
   data () {
     return {
       task: {
@@ -18,26 +18,36 @@ export default {
   methods: {
     save () {
       this.service.save(this.task)
-      this.task.title = ''
-      this.task.description = ''
+        .then(res => {
+          this.task.title = ''
+          this.task.description = ''
+        })
     }
   }
 }
 </script>
 
 <template>
-  <div class="main">
-    <q-card v-model="opened" style="height:250px; text-align:center">
-        <h5>Adicionar nova task</h5>
-        <q-input class="main" v-model="task.title" float-label="Título" placeholder="Informe o título" />
-        <q-input class="main" v-model="task.description" float-label="Descrição" placeholder="Informe a descrição" />
+  <main>
+    <q-card v-model="opened">
+      <q-card-title>
+        Adicionar nova task
+      </q-card-title>
+      <q-card-separator/>
+      <q-card-main>
+        <q-input v-model="task.title" float-label="Título" placeholder="Informe o título" />
+        <q-input v-model="task.description" float-label="Descrição" placeholder="Informe a descrição" />
+      </q-card-main>
+      <q-card-separator/>
+      <q-card-actions>
+        <q-btn @click="$router.push('/kanban')" color="secondary">Voltar</q-btn>
+        <q-btn @click="save()" color="primary">Salvar</q-btn>
+      </q-card-actions>
     </q-card>
-    <q-btn @click="$router.push('/kanban')" color="secondary">Voltar</q-btn>
-    <q-btn @click="save()" color="primary">Salvar</q-btn>
-  </div>
+  </main>
 </template>
 
 <style lang="stylus" scoped>
-.main
+main
   margin 40px
 </style>

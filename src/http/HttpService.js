@@ -6,39 +6,53 @@ class HttpService {
   }
 
   findAll () {
-    return http.get(this.url).then(res => res.data, error => {
-      console.log(error)
-      this.dialog('Erro', 'Não foi possível carregar as informações')
-    })
+    return http.get(this.url)
+      .then(res => res.data)
+      .catch(error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível carregar as informações')
+      })
   }
 
   findOne (id) {
-    return http.get(`${this.url} / ${id}`).then(res => res.data, error => {
-      console.log(error)
-      this.dialog('Erro', 'Não foi possível realizar a consulta')
-    })
+    return http.get(`${this.url} / ${id}`)
+      .then(res => res.data)
+      .catch(error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível realizar a consulta', 'negative')
+      })
   }
 
   save (entity) {
     return http.post(this.url, entity)
-      .then(res => res.data, error => {
+      .then(res => {
+        if (entity.id) {
+          this.dialog('Editado', 'Informações editados com sucesso', 'primary')
+        }
+        else {
+          this.dialog('Salvo', 'Informações salvas com sucesso', 'primary')
+        }
+        return res.data
+      }).catch(error => {
         console.log(error)
-        this.dialog('Erro', 'Não foi possível salvar a informação')
+        this.dialog('Erro', 'Não foi possível salvar a informação', 'negative')
       })
   }
 
   delete (id) {
-    return http.delete(`${this.url} / ${id}`)
-      .then(res => res.data,
-        error => {
-          console.log(error)
-          this.dialog('Erro', 'Não foi possível deletar a informação')
-        })
+    return http.delete(`${this.url}/${id}`)
+      .then(res => {
+        this.dialog('Exclusão', 'Informações excluídas com sucesso', 'primary')
+        return res.data
+      }).catch(error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível deletar a informação', 'negative')
+      })
   }
 
-  dialog (title, message) {
+  dialog (title, message, color) {
     Dialog.create({
-      title, message
+      title, message, color
     })
   }
 }

@@ -29,5 +29,9 @@ export default [
   {
     path: '/kanban/form',
     component: load('KanbanForm', 'kanban/form')
+  },
+  {
+    path: '/kanban/form/:id',
+    component: load('KanbanForm', 'kanban/form')
   }
 ]
