@@ -12,7 +12,6 @@ export default {
       colOne: [],
       colTwo: [],
       colThree: [],
-      openDialog: false,
       options: {
         group: 'task'
       }
@@ -44,9 +43,10 @@ export default {
 
 <template>
   <div>
-    <left>
-      <q-btn round color="secondary" icon="create" @click="$router.push('/kanban/form')" label="On Left"/>
-    </left>
+    <q-btn class="right" round 
+      color="secondary" icon="create" 
+      @click="$router.push('/kanban/form')"/>
+    
     <div class="row" >
       <card title="TODO" class="col" color="negative">
         <draggrable  :options="options" min-height="0">
@@ -99,7 +99,7 @@ export default {
   </div>
 </template>
 <style lang="stylus" scoped>
-left 
+.right 
   float right 
   margin 20px
 </style>

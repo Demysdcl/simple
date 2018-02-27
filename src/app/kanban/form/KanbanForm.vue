@@ -14,6 +14,14 @@ export default {
   },
   created () {
     this.service = new HttpService('tasks')
+    let id = this.$route.params.id
+    if (id) {
+      this.service.findOne(id)
+        .then(res => {
+          this.task = res
+          this.task.id = id
+        })
+    }
   },
   methods: {
     save () {
@@ -29,7 +37,7 @@ export default {
 
 <template>
   <main>
-    <q-card v-model="opened">
+    <q-card>
       <q-card-title>
         Adicionar nova task
       </q-card-title>

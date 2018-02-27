@@ -15,7 +15,7 @@ class HttpService {
   }
 
   findOne (id) {
-    return http.get(`${this.url} / ${id}`)
+    return http.get(`${this.url}/${id}`)
       .then(res => res.data)
       .catch(error => {
         console.log(error)
@@ -26,17 +26,21 @@ class HttpService {
   save (entity) {
     return http.post(this.url, entity)
       .then(res => {
-        if (entity.id) {
-          this.dialog('Editado', 'Informações editados com sucesso', 'primary')
-        }
-        else {
-          this.dialog('Salvo', 'Informações salvas com sucesso', 'primary')
-        }
+        this.getMessage(entity.id)
         return res.data
       }).catch(error => {
         console.log(error)
         this.dialog('Erro', 'Não foi possível salvar a informação', 'negative')
       })
+  }
+
+  getMessage (id) {
+    if (id) {
+      this.dialog('Editado', 'Informações editados com sucesso', 'primary')
+    }
+    else {
+      this.dialog('Salvo', 'Informações salvas com sucesso', 'primary')
+    }
   }
 
   delete (id) {
