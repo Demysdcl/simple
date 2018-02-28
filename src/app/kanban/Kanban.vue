@@ -58,7 +58,7 @@ export default {
             <q-card-separator/>
             <q-card-actions>
               <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
-              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+              <q-btn color="negative" flat @click="remove(task)">Excluir</q-btn>
             </q-card-actions>
           </q-card>
         </draggrable>
@@ -74,7 +74,7 @@ export default {
             <q-card-separator/>
             <q-card-actions>
               <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
-              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+              <q-btn color="negative" flat @click="remove(task)">Excluir</q-btn>
             </q-card-actions>
           </q-card>
         </draggrable>
@@ -90,7 +90,7 @@ export default {
             <q-card-separator/>
             <q-card-actions>
               <q-btn color="primary" flat @click="$router.push(`/kanban/form/${task.id}`)">Editar</q-btn>
-              <q-btn color="negative" flat @click="remove(task)" flat>Excluir</q-btn>
+              <q-btn color="negative" flat @click="remove(task)">Excluir</q-btn>
             </q-card-actions>
           </q-card>
         </draggrable>
