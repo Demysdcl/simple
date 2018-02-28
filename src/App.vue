@@ -26,17 +26,8 @@ export default {
   <q-layout ref="layout" view="lHh Lpr lFf">
     <Toolbar @clicked="$refs.layout.toggleLeft()" :title="title" slot="header"></Toolbar>
     <Menu slot="left" @clicked="changeTitle($event)"></Menu>
-    <main>
-      <router-view></router-view>
-    </main>
+    <router-view></router-view>
     <Footer slot="footer"></Footer>
   </q-layout>
 </div>
 </template>
-
-<style lang="stylus">
-@import '~variables'
-
-main
-  text-align center
-</style>

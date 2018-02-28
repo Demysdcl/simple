@@ -1,5 +1,14 @@
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters(['welcome'])
+  }
+}
+</script>
+
 <template>
-  <div class="hello">
+  <main class="hello">
     <h5>Welcome to Vue course</h5>
     <div class="content">
       <img class="image" src="statics/logo.png" />
@@ -14,17 +23,14 @@
       <li><a href="https://www.youtube.com/channel/UCTluPqMkm90zyw6mCde561A"
         target="_blank" rel="noopener">Codecasts</a></li>
     </ul>
-  </div>
+    <p>{{ welcome }}</p>
+  </main>
 </template>
-
-<script>
-export default {
-  name: 'home'
-}
-</script>
 
 <style lang="stylus" scoped>
 @import '~variables'
+main
+  text-align center
 .content
   height 180px
   margin-top 50px
