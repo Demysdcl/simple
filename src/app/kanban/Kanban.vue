@@ -47,7 +47,7 @@ export default {
       color="secondary" icon="create" 
       @click="$router.push('/kanban/form')"/>
     
-    <div class="row" >
+    <div class="row">
       <card title="TODO" class="col" color="negative">
         <draggrable  :options="options" min-height="0">
           <q-card v-for="task in colOne" color="dark" :key="task.id">
