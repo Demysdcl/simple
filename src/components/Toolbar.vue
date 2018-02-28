@@ -9,6 +9,11 @@ export default {
     clicked () {
       this.$emit('clicked')
     }
+  },
+  computed: {
+    user () {
+      return this.$store.state.user
+    }
   }
 }
 </script>
@@ -21,7 +26,7 @@ export default {
       <q-icon name="menu" />
     </q-btn>
     <q-toolbar-title class="title-left">
-      {{ title }}
+      {{ title }} <span style="float:right" >{{ user.name }}</span>
     </q-toolbar-title>
   </q-toolbar>
 </template>
