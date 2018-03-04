@@ -39,7 +39,7 @@ export default {
   <main>
     <q-card>
       <q-card-title>
-        Adicionar nova task
+        {{ task.id ? 'Editar' : 'Adicionar nova ' }} task
       </q-card-title>
       <q-card-separator/>
       <q-card-main>
