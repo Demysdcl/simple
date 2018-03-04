@@ -9,17 +9,17 @@ export default {
         title: '',
         description: '',
         status: 'TODO'
-      }
+      },
+      id: null
     }
   },
   created () {
     this.service = new HttpService('tasks')
-    let id = this.$route.params.id
-    if (id) {
-      this.service.findOne(id)
+    this.id = this.$route.params.id
+    if (this.id) {
+      this.service.findOne(this.id)
         .then(res => {
           this.task = res
-          this.task.id = id
         })
     }
   },
@@ -30,6 +30,9 @@ export default {
           this.task.title = ''
           this.task.description = ''
         })
+    },
+    update () {
+      this.service.update(this.id, this.task)
     }
   }
 }
@@ -39,7 +42,7 @@ export default {
   <main>
     <q-card>
       <q-card-title>
-        {{ task.id ? 'Editar' : 'Adicionar nova ' }} task
+        {{ id ? 'Editar' : 'Adicionar nova ' }} task
       </q-card-title>
       <q-card-separator/>
       <q-card-main>
@@ -49,7 +52,9 @@ export default {
       <q-card-separator/>
       <q-card-actions>
         <q-btn @click="$router.push('/kanban')" color="secondary">Voltar</q-btn>
-        <q-btn @click="save()" color="primary">Salvar</q-btn>
+        <q-btn @click="update()" v-if="id" color="primary">Atualizar</q-btn>
+        <q-btn @click="save()" v-else color="primary">Salvar</q-btn>
+        
       </q-card-actions>
     </q-card>
   </main>

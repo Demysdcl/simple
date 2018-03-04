@@ -19,14 +19,13 @@ export default {
   },
 
   created () {
-    this.service = new HttpService('list')
-    this.taskService = new HttpService('tasks')
+    this.service = new HttpService('tasks')
     this.getList()
   },
 
   methods: {
     getList () {
-      this.service.findAll().then(res => {
+      this.service.find('list').then(res => {
         this.colOne = res.todoList
         this.colTwo = res.doingList
         this.colThree = res.doneList
@@ -34,8 +33,16 @@ export default {
     },
 
     remove (task) {
-      this.taskService.delete(task.id)
+      this.service.delete(task.id)
         .then(res => this.getList())
+    },
+
+    changeStatus (item, status) {
+      if (item.added) {
+        let task = item.added.element
+        task.status = status
+        this.service.update(task.id, task)
+      }
     }
   }
 }
@@ -49,7 +56,7 @@ export default {
     
     <div class="row">
       <card title="TODO" class="col" color="negative">
-        <draggrable  :options="options" min-height="0">
+        <draggrable  :options="options" min-height="0" @change="changeStatus($event, 'TODO')" :list="colOne">
           <q-card v-for="task in colOne" color="dark" :key="task.id">
             <q-card-main>
               <h6>{{ task.title }} </h6>
@@ -65,7 +72,7 @@ export default {
       </card>
 
       <card title="DOING" class="col" color="warning">
-        <draggrable :options="options" min-height="0">
+        <draggrable :options="options" min-height="0" @change="changeStatus($event, 'DOING')" :list="colTwo">
           <q-card v-for="task in colTwo" color="dark" :key="task.id">
             <q-card-main>
               <h6>{{ task.title }} </h6>
@@ -81,7 +88,7 @@ export default {
       </card>
 
       <card title="DONE" class="col" color="positive">
-        <draggrable :options="options" min-height="0">
+        <draggrable :options="options" min-height="0" @change="changeStatus($event, 'DONE')" :list="colThree">
           <q-card v-for="task in colThree" color="dark" :key="task.id">
             <q-card-main>
               <h6>{{ task.title }} </h6>

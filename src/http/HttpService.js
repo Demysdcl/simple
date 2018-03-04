@@ -14,6 +14,15 @@ class HttpService {
       })
   }
 
+  find (extesion) {
+    return http.get(`${this.url}/${extesion}`)
+      .then(res => res.data)
+      .catch(error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível carregar as informações')
+      })
+  }
+
   findOne (id) {
     return http.get(`${this.url}/${id}`)
       .then(res => res.data)
@@ -26,7 +35,7 @@ class HttpService {
   save (entity) {
     return http.post(this.url, entity)
       .then(res => {
-        this.getMessage(entity.id)
+        this.dialog('Salvo', 'Informações salvas com sucesso', 'primary')
         return res.data
       }).catch(error => {
         console.log(error)
@@ -34,13 +43,15 @@ class HttpService {
       })
   }
 
-  getMessage (id) {
-    if (id) {
-      this.dialog('Editado', 'Informações editados com sucesso', 'primary')
-    }
-    else {
-      this.dialog('Salvo', 'Informações salvas com sucesso', 'primary')
-    }
+  update (id, entity) {
+    return http.put(`${this.url}/${id}`, entity)
+      .then(res => {
+        this.dialog('Editado', 'Informações editadas com sucesso', 'primary')
+        return res.data
+      }).catch(error => {
+        console.log(error)
+        this.dialog('Erro', 'Não foi possível salvar a informação', 'negative')
+      })
   }
 
   delete (id) {
