@@ -7,16 +7,14 @@ export default {
   components: {
     QCard, QCardMain, QCardActions, QCardSeparator, QBtn, Card, draggrable
   },
-  data () {
-    return {
-      colOne: [],
-      colTwo: [],
-      colThree: [],
-      options: {
-        group: 'task'
-      }
+  data: () => ({
+    colOne: [],
+    colTwo: [],
+    colThree: [],
+    options: {
+      group: 'task'
     }
-  },
+  }),
 
   created () {
     this.service = new HttpService('tasks')
