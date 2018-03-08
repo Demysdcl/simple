@@ -4,5 +4,5 @@ export default {
     email: 'demysdcl@gmail.com',
     roles: ['admin']
   },
-  token: 'fdfdsfdsafa.fdsfdfasdf$dfadf.dfaf'
+  token: null
 }
