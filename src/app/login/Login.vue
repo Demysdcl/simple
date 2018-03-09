@@ -24,11 +24,11 @@ export default {
         <q-card-separator/>
 
         <q-card-main>
-          <q-input color="black" name="username" v-validate data-vv-rules="required" v-model.lazy="user.username"
+          <q-input name="username" v-validate data-vv-rules="required" v-model.lazy="user.username"
             float-label="Username" placeholder="Informe o username" />
           <span style="color:black" v-show="errors.has('username')">{{ errors.first('username') }}</span>
 
-          <q-input color="black" name="senha" data-vv-rules="required" v-validate v-model.lazy="user.password" 
+          <q-input name="senha" data-vv-rules="required" v-validate v-model.lazy="user.password" 
             float-label="Senha" placeholder="Informe a senha" />
           <span style="color:black" v-show="errors.has('senha')">{{ errors.first('senha') }}</span>              
         </q-card-main>
@@ -48,4 +48,5 @@ export default {
 <style scoped lang="stylus">
 main
   color black 
+  margin 50px
 </style>
