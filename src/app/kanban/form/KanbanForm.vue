@@ -37,6 +37,7 @@ export default {
         this.service.update(this.id, this.task)
       })
     },
+
     validate (call) {
       this.$validator.validateAll().then(success => {
         if (success) {

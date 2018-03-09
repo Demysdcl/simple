@@ -1,8 +1,7 @@
 export default {
   user: {
-    name: 'Demys Cota de Lima',
-    email: 'demysdcl@gmail.com',
-    roles: ['admin']
+    username: '',
+    password: ''
   },
   token: null
 }

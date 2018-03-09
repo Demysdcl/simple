@@ -1,5 +1,6 @@
 <script>
 import { QCard, QCardMain, QCardTitle, QCardActions, QCardSeparator, QBtn, QInput } from 'quasar'
+import { mapActions } from 'vuex'
 export default {
   components: { QCard, QCardTitle, QCardMain, QCardActions, QCardSeparator, QBtn, QInput },
   data: () => ({
@@ -7,7 +8,15 @@ export default {
       username: '',
       password: ''
     }
-  })
+  }),
+  methods: {
+    ...mapActions(['changeToken', 'changeUser']),
+    signin () {
+      this.changeUser(this.user)
+      this.changeToken('ffdkkfafa.ldfjdfjadfladfdasjf.fjdfj')
+      alert('Clicked')
+    }
+  }
 }
 </script>
 
@@ -36,7 +45,7 @@ export default {
         <q-card-separator/>
 
         <q-card-actions align="center">
-          <q-btn  @click="save()" color="primary">Login</q-btn>
+          <q-btn  @click="signin()" color="primary">Login</q-btn>
         </q-card-actions>
 
       </q-card>

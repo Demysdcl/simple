@@ -1,6 +1,6 @@
 export default {
   welcome: state => {
-    return `Bem vindo ${state.user.name}`
+    return `Bem vindo ${state.user.username}`
   },
 
   isLogged: state => {
