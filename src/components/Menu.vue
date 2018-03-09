@@ -20,13 +20,14 @@ export default {
 </script>
 
 <template>
-  <div>
-    <q-list no-border link inset-separator>
-      <q-list-header>Menu</q-list-header>
-      <q-side-link v-for="route in routes" v-if="route.title" item :to="route.path" :key="route.title">
-        <q-item-side :icon="route.icon" />
-        <q-item-main :label="route.title" @click="clicked(route.title)" :sublabel="route.subtitle" />
-      </q-side-link>
-    </q-list>
+  <div>  
+      <q-list no-border link inset-separator v-for="route in routes" v-if="route.children">
+        <q-list-header>Menu</q-list-header>
+        <q-side-link v-for="child in route.children" v-if="child.title" item :to="child.path" :key="child.title">
+          <q-item-side :icon="route.icon" />
+          <q-item-main :label="child.title" @click="clicked(child.title)" :sublabel="child.subtitle" />
+        </q-side-link>
+      </q-list>
+    
   </div>
 </template>
