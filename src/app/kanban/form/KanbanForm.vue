@@ -35,6 +35,7 @@ export default {
     update () {
       this.validate(call => {
         this.service.update(this.id, this.task)
+          .then(success => this.service.dialog('Atualizado', 'Informações atualizadas com sucesso', 'primary'))
       })
     },
 

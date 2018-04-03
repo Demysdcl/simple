@@ -1,5 +1,11 @@
 export default {
-  'CHANGE_USER' (state, payload) {
+
+  setUser (state, payload) {
     state.user = payload
+  },
+
+  setToken (state, payload) {
+    state.token = payload
   }
+
 }

@@ -46,7 +46,6 @@ class HttpService {
   update (id, entity) {
     return http.put(`${this.url}/${id}`, entity)
       .then(res => {
-        this.dialog('Editado', 'Informações editadas com sucesso', 'primary')
         return res.data
       }).catch(error => {
         console.log(error)

@@ -2,7 +2,7 @@
 require(`quasar/dist/quasar.${__THEME}.css`)
 
 import Vue from 'vue'
-import store from './store/store'
+import store from './store'
 import Quasar from 'quasar'
 import router from './router'
 import VeeValidate from 'vee-validate'
@@ -10,7 +10,7 @@ import 'quasar-extras/material-icons'
 import 'quasar-extras/ionicons'
 import 'quasar-extras/fontawesome'
 import 'quasar-extras/animate'
-import messages from './pt_BR'
+import * as messages from './pt_BR'
 
 Vue.config.productionTip = false
 Vue.use(Quasar)
@@ -24,7 +24,6 @@ Vue.use(VeeValidate, {
 if (__THEME === 'mat') {
   require('quasar-extras/roboto-font')
 }
-
 
 new Vue({
   el: '#q-app',

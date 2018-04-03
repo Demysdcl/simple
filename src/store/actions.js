@@ -1,10 +1,11 @@
 export default {
+
   changeUser (context, payload) {
-    context.user = payload
+    context.commit('setUser', payload)
   },
 
   changeToken (context, payload) {
-    context.token = payload
+    context.commit('setToken', payload)
   }
 
 }
